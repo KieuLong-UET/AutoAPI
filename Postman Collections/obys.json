@@ -110,7 +110,7 @@
 									}
 								}
 							],
-							"_postman_id": "333559ec-caf7-47fe-b0c7-a449f470daf7",
+							"id": "333559ec-caf7-47fe-b0c7-a449f470daf7",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -137,8 +137,7 @@
 							"response": []
 						}
 					],
-					"_postman_id": "3e3a0fe7-5708-438a-8cce-bdaba070531c",
-					"_postman_isSubFolder": true
+					"id": "3e3a0fe7-5708-438a-8cce-bdaba070531c"
 				},
 				{
 					"name": "Test_Case_02: Login Validation Input",
@@ -178,9 +177,9 @@
 											"    },\r",
 											"};\r",
 											"\r",
-											"pm.test(\"Check status\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
+											"// pm.test(\"Check status\", function () {\r",
+											"//     pm.response.to.have.status(401);\r",
+											"// });\r",
 											"\r",
 											"pm.test(\"Check schema\", () => {\r",
 											"    pm.response.to.have.jsonSchema(schema);\r",
@@ -198,7 +197,7 @@
 									}
 								}
 							],
-							"_postman_id": "704629f4-26e5-43da-b7e1-1a61c26098ae",
+							"id": "704629f4-26e5-43da-b7e1-1a61c26098ae",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -225,8 +224,7 @@
 							"response": []
 						}
 					],
-					"_postman_id": "a4cd39c6-a881-4f78-b6f0-084f8c9f7b93",
-					"_postman_isSubFolder": true
+					"id": "a4cd39c6-a881-4f78-b6f0-084f8c9f7b93"
 				},
 				{
 					"name": "Test_Case_03:  Username is incorrect",
@@ -282,7 +280,7 @@
 									}
 								}
 							],
-							"_postman_id": "2afdd49f-524b-43ae-940d-82b56711c21d",
+							"id": "2afdd49f-524b-43ae-940d-82b56711c21d",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -309,8 +307,7 @@
 							"response": []
 						}
 					],
-					"_postman_id": "90260528-adbd-4624-b066-1f3cb6bcf099",
-					"_postman_isSubFolder": true
+					"id": "90260528-adbd-4624-b066-1f3cb6bcf099"
 				},
 				{
 					"name": "Test_Case_04:  Password is incorrect",
@@ -366,7 +363,7 @@
 									}
 								}
 							],
-							"_postman_id": "028284ff-1b67-4751-863a-35ba2baffad4",
+							"id": "028284ff-1b67-4751-863a-35ba2baffad4",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -393,11 +390,10 @@
 							"response": []
 						}
 					],
-					"_postman_id": "09e682f9-a8a6-4b84-aa4d-4cd0fbf36e6a",
-					"_postman_isSubFolder": true
+					"id": "09e682f9-a8a6-4b84-aa4d-4cd0fbf36e6a"
 				}
 			],
-			"_postman_id": "822e604c-78fa-4a96-ab42-820e20257b04"
+			"id": "822e604c-78fa-4a96-ab42-820e20257b04"
 		}
 	]
 }
