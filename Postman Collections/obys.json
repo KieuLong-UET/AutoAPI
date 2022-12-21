@@ -1,0 +1,403 @@
+{
+	"info": {
+		"_postman_id": "cf547654-cb17-4e0a-9bc5-0463df806f16",
+		"name": "Test OBYS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Test_Case_01: Login success",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "16faa18d-e429-4b85-a017-5686ab38015a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "a364aa52-8470-4dd6-897c-0d6aad1e23d1",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"code\": { \"type\": \"string\" },\r",
+											"        \"message\": { \"type\": \"string\" },\r",
+											"        \"data\": {\r",
+											"            \"type\": \"object\",\r",
+											"            \"properties\": {\r",
+											"                \"userDetails\": {\r",
+											"                    \"type\": \"object\",\r",
+											"                    \"properties\": {\r",
+											"                        \"username\": { \"type\": \"string\" },\r",
+											"                        \"name\": { \"type\": \"string\" },\r",
+											"                        \"email\": { \"type\": [\"string\", \"null\"] },\r",
+											"                        \"phoneNumber\": { \"type\": [\"string\", \"null\"] },\r",
+											"                        \"address\": { \"type\": [\"string\", \"null\"] },\r",
+											"                        \"constructionSiteList\": {\r",
+											"                            \"type\": \"array\",\r",
+											"                            \"items\": {\r",
+											"                                \"type\": \"object\",\r",
+											"                                \"properties\": {\r",
+											"                                    \"createdBy\": { \"type\": [\"string\", \"null\"] },\r",
+											"                                    \"createdDate\": { \"type\": [\"string\", \"null\"] },\r",
+											"                                    \"updatedBy\": { \"type\": [\"string\", \"null\"] },\r",
+											"                                    \"updatedDate\": { \"type\": [\"string\", \"null\"] },\r",
+											"                                    \"id\": { \"type\": \"number\" },\r",
+											"                                    \"name\": { \"type\": \"string\" },\r",
+											"                                    \"status\": { \"type\": \"number\" }\r",
+											"                                },\r",
+											"                                \"required\": [\"id\", \"name\", \"status\", \"createdDate\"]\r",
+											"                            }\r",
+											"                        },\r",
+											"                        \"roleId\": { \"type\": \"number\" },\r",
+											"                        \"createdBy\": { \"type\": [\"string\", \"null\"] },\r",
+											"                        \"createdDate\": { \"type\": [\"string\", \"null\"] },\r",
+											"                        \"updatedDate\": { \"type\": [\"string\", \"null\"] },\r",
+											"                        \"updatedBy\": { \"type\": [\"string\", \"null\"] }\r",
+											"                    },\r",
+											"                },\r",
+											"                \"token\": { \"type\": \"string\" },\r",
+											"                \"refreshToken\": { \"type\": \"string\" },\r",
+											"                \"expireDate\": { \"type\": \"string\" }\r",
+											"            },\r",
+											"        }\r",
+											"    },\r",
+											"};\r",
+											"\r",
+											"pm.test(\"Check status\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Check schema\", () => {\r",
+											"    pm.response.to.have.jsonSchema(schema);\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Check message\", function(){\r",
+											"    pm.expect(jsonData.message).to.eql(\"ログインに成功しました。\", \"Error message\");\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Check code\", function () {\r",
+											"    pm.expect(jsonData.code).to.eql(\"S_010_01\", \"Error code\");\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Check username\", function () {\r",
+											"    pm.expect(jsonData.data.userDetails.username).to.eql(\"admin\", \"Error username\");\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Check construction Site List status\", () => {\r",
+											"    jsonData.data.userDetails.constructionSiteList.forEach(element => {\r",
+											"        pm.expect(element.status).to.equal(1);\r",
+											"    })\r",
+											"});\r",
+											"console.log(jsonData.data.userDetails.constructionSiteList[0])\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "333559ec-caf7-47fe-b0c7-a449f470daf7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "ja",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"Vti@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://10.1.12.113:8083/api/auth/login"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "3e3a0fe7-5708-438a-8cce-bdaba070531c",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Test_Case_02: Login Validation Input",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "16faa18d-e429-4b85-a017-5686ab38015a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "a364aa52-8470-4dd6-897c-0d6aad1e23d1",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"code\": { \"type\": \"string\" },\r",
+											"        \"message\": { \"type\": \"string\" },\r",
+											"        \"data\": {\r",
+											"            \"type\": \"object\",\r",
+											"            \"properties\": {\r",
+											"                \"password\": { \"type\": \"string\" },\r",
+											"                \"username\": { \"type\": \"string\" },\r",
+											"            },\r",
+											"        }\r",
+											"    },\r",
+											"};\r",
+											"\r",
+											"pm.test(\"Check status\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Check schema\", () => {\r",
+											"    pm.response.to.have.jsonSchema(schema);\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Check code\", function () {\r",
+											"    pm.expect(jsonData.code).to.eql(\"E_CM_BAD_REQUEST\", \"Error code\");\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Check message\", function(){\r",
+											"    pm.expect(jsonData.message).to.eql(\"要求の形式が正しくありません\", \"Error message\");\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "704629f4-26e5-43da-b7e1-1a61c26098ae",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "ja",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{URI}}/api/auth/login"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "a4cd39c6-a881-4f78-b6f0-084f8c9f7b93",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Test_Case_03:  Username is incorrect",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "16faa18d-e429-4b85-a017-5686ab38015a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "a364aa52-8470-4dd6-897c-0d6aad1e23d1",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"code\": { \"type\": \"string\" },\r",
+											"        \"message\": { \"type\": \"string\" },\r",
+											"        \"data\": {\r",
+											"            \"type\": \"null\",\r",
+											"        }\r",
+											"    },\r",
+											"};\r",
+											"\r",
+											"pm.test(\"Check status\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Check schema\", () => {\r",
+											"    pm.response.to.have.jsonSchema(schema);\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Check code\", function () {\r",
+											"    pm.expect(jsonData.code).to.eql(\"E_010_01\", \"Error code\");\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Check message\", function(){\r",
+											"    pm.expect(jsonData.message).to.eql(\"ユーザ名またはパスワードが正しくありません。\", \"Error message\");\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "2afdd49f-524b-43ae-940d-82b56711c21d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "ja",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"Admin\",\r\n    \"password\": \"Vti@1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{URI}}/api/auth/login"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "90260528-adbd-4624-b066-1f3cb6bcf099",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Test_Case_04:  Password is incorrect",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "16faa18d-e429-4b85-a017-5686ab38015a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "a364aa52-8470-4dd6-897c-0d6aad1e23d1",
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"const schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"code\": { \"type\": \"string\" },\r",
+											"        \"message\": { \"type\": \"string\" },\r",
+											"        \"data\": {\r",
+											"            \"type\": \"null\",\r",
+											"        }\r",
+											"    },\r",
+											"};\r",
+											"\r",
+											"pm.test(\"Check status\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Check schema\", () => {\r",
+											"    pm.response.to.have.jsonSchema(schema);\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Check code\", function () {\r",
+											"    pm.expect(jsonData.code).to.eql(\"E_010_01\", \"Error code\");\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Check message\", function(){\r",
+											"    pm.expect(jsonData.message).to.eql(\"ユーザ名またはパスワードが正しくありません。\", \"Error message\");\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "028284ff-1b67-4751-863a-35ba2baffad4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "ja",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"vti@1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{URI}}/api/auth/login"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "09e682f9-a8a6-4b84-aa4d-4cd0fbf36e6a",
+					"_postman_isSubFolder": true
+				}
+			],
+			"_postman_id": "822e604c-78fa-4a96-ab42-820e20257b04"
+		}
+	]
+}
