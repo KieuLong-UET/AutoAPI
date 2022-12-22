@@ -347,9 +347,9 @@
 											"//     pm.response.to.have.status(401);\r",
 											"// });\r",
 											"\r",
-											"pm.test(\"Check schema\", () => {\r",
-											"    pm.response.to.have.jsonSchema(schema);\r",
-											"})\r",
+											"// pm.test(\"Check schema\", () => {\r",
+											"//     pm.response.to.have.jsonSchema(schema);\r",
+											"// })\r",
 											"\r",
 											"pm.test(\"Check code\", function () {\r",
 											"    pm.expect(jsonData.code).to.eql(\"E_010_01\", \"Error code\");\r",
@@ -420,7 +420,7 @@
 	],
 	"variable": [
 		{
-			"id": "8eb78831-0231-4c4a-b6c9-bfc7bcc4bacb",
+			"id": "ca6d1070-1b96-4a29-9eb6-2d9620449073",
 			"key": "URI",
 			"value": "http://10.1.12.113:8083",
 			"type": "string"
