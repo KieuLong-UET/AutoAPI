@@ -343,9 +343,9 @@
 											"    },\r",
 											"};\r",
 											"\r",
-											"pm.test(\"Check status\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
+											"// pm.test(\"Check status\", function () {\r",
+											"//     pm.response.to.have.status(401);\r",
+											"// });\r",
 											"\r",
 											"pm.test(\"Check schema\", () => {\r",
 											"    pm.response.to.have.jsonSchema(schema);\r",
@@ -420,7 +420,7 @@
 	],
 	"variable": [
 		{
-			"id": "b8273ec3-14ce-47b6-8bb6-847c977a891b",
+			"id": "76fa9809-dcb1-465a-b5cf-618ef63fab22",
 			"key": "URI",
 			"value": "http://10.1.12.113:8083",
 			"type": "string"
