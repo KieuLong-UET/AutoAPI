@@ -132,7 +132,7 @@
 										}
 									}
 								},
-								"url": "{{URI}}/api/auth/login2"
+								"url": "{{URI}}/api/auth/login"
 							},
 							"response": []
 						}
@@ -420,7 +420,7 @@
 	],
 	"variable": [
 		{
-			"id": "35147d1d-32e0-45b4-8779-6df91725b709",
+			"id": "254df06c-4608-436e-8e8c-96d6f5b1c667",
 			"key": "URI",
 			"value": "http://10.1.12.113:8083",
 			"type": "string"
