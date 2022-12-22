@@ -212,7 +212,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"\"\r\n}",
+									"raw": "{\r\n    \"username\": \"1\",\r\n    \"password\": \"1\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -420,7 +420,7 @@
 	],
 	"variable": [
 		{
-			"id": "29dbeffa-8b8f-484c-bb41-5fb3a2ee4b73",
+			"id": "3fb06f7f-a6eb-4693-97df-1dc40857bba1",
 			"key": "URI",
 			"value": "http://10.1.12.113:8083",
 			"type": "string"
