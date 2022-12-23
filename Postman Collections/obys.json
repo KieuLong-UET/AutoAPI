@@ -177,21 +177,21 @@
 											"    },\r",
 											"};\r",
 											"\r",
-											"pm.test(\"Check status\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
+											"// pm.test(\"Check status\", function () {\r",
+											"//     pm.response.to.have.status(401);\r",
+											"// });\r",
 											"\r",
-											"pm.test(\"Check schema\", () => {\r",
-											"    pm.response.to.have.jsonSchema(schema);\r",
-											"})\r",
+											"// pm.test(\"Check schema\", () => {\r",
+											"//     pm.response.to.have.jsonSchema(schema);\r",
+											"// })\r",
 											"\r",
-											"pm.test(\"Check code\", function () {\r",
-											"    pm.expect(jsonData.code).to.eql(\"E_CM_BAD_REQUEST\", \"Error code\");\r",
-											"})\r",
+											"// pm.test(\"Check code\", function () {\r",
+											"//     pm.expect(jsonData.code).to.eql(\"E_CM_BAD_REQUEST\", \"Error code\");\r",
+											"// })\r",
 											"\r",
-											"pm.test(\"Check message\", function(){\r",
-											"    pm.expect(jsonData.message).to.eql(\"要求の形式が正しくありません\", \"Error message\");\r",
-											"})"
+											"// pm.test(\"Check message\", function(){\r",
+											"//     pm.expect(jsonData.message).to.eql(\"要求の形式が正しくありません\", \"Error message\");\r",
+											"// })"
 										],
 										"type": "text/javascript"
 									}
@@ -420,7 +420,7 @@
 	],
 	"variable": [
 		{
-			"id": "c216928c-5ce5-48ce-b23e-87552da751f5",
+			"id": "e035c45b-89a9-4ed5-82c5-1eab1202e9fc",
 			"key": "URI",
 			"value": "http://10.1.12.113:8083",
 			"type": "string"
