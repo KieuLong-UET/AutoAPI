@@ -351,9 +351,9 @@
 											"    pm.response.to.have.jsonSchema(schema);\r",
 											"})\r",
 											"\r",
-											"// pm.test(\"Check code\", function () {\r",
-											"//     pm.expect(jsonData.code).to.eql(\"E_010_01\", \"Error code\");\r",
-											"// })\r",
+											"pm.test(\"Check code\", function () {\r",
+											"    pm.expect(jsonData.code).to.eql(\"E_010_01\", \"Error code\");\r",
+											"})\r",
 											"\r",
 											"pm.test(\"Check message\", function(){\r",
 											"    pm.expect(jsonData.message).to.eql(\"ユーザ名またはパスワードが正しくありません。\", \"Error message\");\r",
@@ -420,7 +420,7 @@
 	],
 	"variable": [
 		{
-			"id": "56cc05f7-232e-4095-b7ad-5f981e77181a",
+			"id": "20d4de54-685e-4471-95c6-c1378da04de8",
 			"key": "URI",
 			"value": "http://10.1.12.113:8083",
 			"type": "string"
